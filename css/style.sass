@@ -1,0 +1,101 @@
+*
+  margin: 0
+  padding: 0
+
+body
+  font-size: 18px
+  font-family: Tahoma
+
+header
+  height: 70px
+  background: #2a2f33
+  .logo
+    padding-top: 12px
+    width: 238px
+    img
+      display: block
+      width: 100%
+
+.container
+  width: 1280px
+  margin:  0 auto
+  .wrapper
+    width: 500px
+    margin: 0 auto
+
+    h2
+      margin-bottom: 20px
+    form
+      .row
+        margin-bottom: 15px
+      input,textarea
+        width: 100%
+        padding: 5px
+        font-style: italic
+        &[type="checkbox"]
+          width: auto
+          margin-right: 10px
+        &[type="submit"]
+          width: 100%
+      select
+        width: 100%
+    .btn
+      margin: 50px auto 20px
+      display: block
+      border: 2px solid #000
+      border-radius: 20px
+      color: #000
+      text-decoration: none
+      width: 245px
+      height: 50px
+      text-align: center
+      font-size: 20px
+      font-weight: bold
+      &:hover
+        color: #ffffff
+        background-color: #000
+
+    .results
+      width: 100%
+      margin: 50px 0 20px
+
+      &-item
+        margin: 10px
+        display: flex
+        div
+          margin-right: 20px
+          font-size: 18px
+        span
+          font-weight: bold
+        .url
+          font-style: italic
+        .done
+          color: green
+        .proccess
+          color: blue
+        .error
+          color: red
+
+    .refresh
+      background-color: #e32d35
+      border: 2px solid #e32d35
+      color: #fff
+      margin: 0
+      width: 136px
+      height: 45px
+      font-size: 16px
+      &:hover
+        background-color: #FE2E36
+        border: 2px solid #FE2E36
+
+    .return
+      display: block
+      text-decoration: none
+      margin: 50px 0 10px
+      &:hover
+        text-decoration: underline
+
+    .error
+      font-size: 20px
+      span
+        font-weight: bold

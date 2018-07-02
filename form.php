@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="field-name">Продвигаемые URL</div>
-        <input type="file" name="url">
+        <input type="file" name="url" id="url">
     </div>
     <div class="row">
         <label><input type="checkbox" name="rel_url" >Определить релевантный URL по выдаче</label>

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    let key = "9846dbccbcc14eced3c68abf94f1c6a8";
     let error;
     let packet = JSON.parse($.cookie('packet'));
     let statusText = [
@@ -35,7 +36,7 @@ $(document).ready(function() {
     }
 
     //Выводим поле для урлов
-    $("input[name='manual_urls']").on("click",function() {
+    $(".wrapper").on("click","input[name='manual_urls']",function() {
         if ($(this).is(':checked')) {
             $(".urls").slideDown();
         } else {
@@ -44,6 +45,88 @@ $(document).ready(function() {
     });
 
     //Новый запрос
+    $(".new_query").on("click", function (e) {
+        e.preventDefault();
+
+        $(".wrapper").load("../form.php");
+    });
+
+    //Получить номера заданий
+    $(".wrapper").on("submit","form",function (e) {
+        e.preventDefault();
+
+        let form = $(this);
+
+        let query = form.find("input[name='query']").val();
+        let customUrls = form.find("textarea[name='user_urls']").val();
+        let searchSystem = form.find("select[name='search_system']").val();
+        let lr = form.find("select[name='lr']").val();
+        let deep = form.find("select[name='deep']").val();
+        let relURL = Number(form.find("input[name='rel_url']").is(":checked"));
+
+        let file = document.getElementById("url");
+
+        if(file.files.length)
+        {
+            let reader = new FileReader();
+
+            reader.onload = function(e)
+            {
+                let result = e.target.result.split("\n");
+                let pattern = "^(http|https):\/\/.*";
+                let newPacket = {
+                    id: Math.floor(Math.random() * 100000),
+                    data: []
+                };
+
+                for (let i = 0;i < result.length;i++){
+                    if(result[i].match(pattern)){
+                        let url = result[i];
+
+
+                        newPacket.data.push({
+                            url: url,
+                            report_id: 111111,
+                            status: 2
+                        });
+
+                        /*TODO: Проблема с задержкой ответов от API
+                        $.ajax({
+                            url:  "https://tools.pixelplus.ru/api/analiztopv2?key="
+                            +key+"&url="
+                            +url+"&query="
+                            +query+"&search_system="
+                            +searchSystem+"&lr="
+                            +lr+"&deep="
+                            +deep+"&rel_url="
+                            +relURL,
+                            type: "GET",
+                            success: function(data){
+                                if(data['report_id']){
+                                    newPacket.data.push({
+                                        url: url,
+                                        report_id: data['report_id'],
+                                        status: 2
+                                    });
+                                }
+                            }
+                        });
+                        */
+                    }
+                }
+
+                $.cookie('packet', JSON.stringify(newPacket), {
+                    expires: 3
+                });
+            };
+
+            reader.readAsBinaryString(file.files[0]);
+        }
+
+        window.location = "/";
+    });
+
+    //Обновляем результаты
     $(".new_query").on("click", function (e) {
         e.preventDefault();
 
@@ -73,28 +156,28 @@ $(document).ready(function() {
             }
         });
     });
-/*
-    let newPacket = {
-        id: Math.random(),
-        data:[
-            {
-                url: "http://site.com",
-                report_id: 111111,
-                status: 1
-            },
-            {
-                url: "http://site.com",
-                report_id: 222222,
-                status: 2
-            }
-        ]
-    }
+                /*
+                    let newPacket = {
+                        id: Math.random(),
+                        data:[
+                            {
+                                url: "http://site.com",
+                                report_id: 111111,
+                                status: 1
+                            },
+                            {
+                                url: "http://site.com",
+                                report_id: 222222,
+                                status: 2
+                            }
+                        ]
+                    }
 
-    $.cookie('packet', JSON.stringify(newPacket), {
-        expires: 3
-    });
+                    $.cookie('packet', JSON.stringify(newPacket), {
+                        expires: 3
+                    });
 
-*/
+                */
 
 /*
     let urls = {

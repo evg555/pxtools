@@ -177,7 +177,9 @@ $(document).ready(function() {
 
     //Проверить результат
     $(".check_result").on("click", function (e) {
+        e.preventDefault();
 
+        $(".container:nth-child(2)").load("../results.php");
     });
 
     /*

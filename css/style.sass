@@ -6,6 +6,11 @@ body
   font-size: 18px
   font-family: Tahoma
 
+ul
+  list-style-type: none
+  margin: 0
+  padding: 0
+
 header
   height: 70px
   background: #2a2f33
@@ -18,9 +23,53 @@ header
 
 .container
   width: 1280px
-  margin:  0 auto
+  margin:  0 auto 100px
+  .inner
+    margin-top: 20px
+    display: flex
+    nav
+      width: 30%
+      h3
+        font-size: 18px
+        font-weight: bold
+      ul
+        li
+          padding: 5px
+          a
+            &:hover
+              text-decoration: none
+    &-container
+      width: 70%
+      margin: 0 20px
+      h2
+        margin-bottom: 15px
+      table
+        width: 100%
+        margin-bottom: 30px
+        tr
+          &:first-child
+            background-color: #000
+            color: #ffffff
+            font-weight: bold
+            font-size: 18px
+            td
+              padding: 15px
+              text-align: center
+              &:nth-child(2)
+                padding-left: 0
+          td
+            width: 30%
+            padding: 15px
+            font-size: 14px
+            &:nth-child(2)
+              width: 40%
+              padding: 15px 50px
+            p
+              margin: 0
+              padding: 0
+
   .wrapper
-    width: 500px
+    width: 720px
     margin: 0 auto
 
     h2
@@ -88,14 +137,14 @@ header
         background-color: #FE2E36
         border: 2px solid #FE2E36
 
-    .return
-      display: block
-      text-decoration: none
-      margin: 50px 0 10px
-      &:hover
-        text-decoration: underline
-
     .error
       font-size: 20px
       span
         font-weight: bold
+
+.return
+  display: block
+  text-decoration: none
+  margin: 50px 0 10px
+  &:hover
+    text-decoration: underline

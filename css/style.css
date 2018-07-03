@@ -6,6 +6,11 @@ body {
   font-size: 18px;
   font-family: Tahoma; }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
 header {
   height: 70px;
   background: #2a2f33; }
@@ -18,9 +23,49 @@ header {
 
 .container {
   width: 1280px;
-  margin: 0 auto; }
+  margin: 0 auto 100px; }
+  .container .inner {
+    margin-top: 20px;
+    display: flex; }
+    .container .inner nav {
+      width: 30%; }
+      .container .inner nav h3 {
+        font-size: 18px;
+        font-weight: bold; }
+      .container .inner nav ul li {
+        padding: 5px; }
+        .container .inner nav ul li a:hover {
+          text-decoration: none; }
+    .container .inner-container {
+      width: 70%;
+      margin: 0 20px; }
+      .container .inner-container h2 {
+        margin-bottom: 15px; }
+      .container .inner-container table {
+        width: 100%;
+        margin-bottom: 30px; }
+        .container .inner-container table tr:first-child {
+          background-color: #000;
+          color: #ffffff;
+          font-weight: bold;
+          font-size: 18px; }
+          .container .inner-container table tr:first-child td {
+            padding: 15px;
+            text-align: center; }
+            .container .inner-container table tr:first-child td:nth-child(2) {
+              padding-left: 0; }
+        .container .inner-container table tr td {
+          width: 30%;
+          padding: 15px;
+          font-size: 14px; }
+          .container .inner-container table tr td:nth-child(2) {
+            width: 40%;
+            padding: 15px 50px; }
+          .container .inner-container table tr td p {
+            margin: 0;
+            padding: 0; }
   .container .wrapper {
-    width: 500px;
+    width: 720px;
     margin: 0 auto; }
     .container .wrapper h2 {
       margin-bottom: 20px; }
@@ -82,15 +127,16 @@ header {
       .container .wrapper .refresh:hover {
         background-color: #FE2E36;
         border: 2px solid #FE2E36; }
-    .container .wrapper .return {
-      display: block;
-      text-decoration: none;
-      margin: 50px 0 10px; }
-      .container .wrapper .return:hover {
-        text-decoration: underline; }
     .container .wrapper .error {
       font-size: 20px; }
       .container .wrapper .error span {
         font-weight: bold; }
+
+.return {
+  display: block;
+  text-decoration: none;
+  margin: 50px 0 10px; }
+  .return:hover {
+    text-decoration: underline; }
 
 /*# sourceMappingURL=style.css.map */

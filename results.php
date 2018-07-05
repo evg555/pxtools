@@ -7,7 +7,7 @@
     }
 ?>
 
-
+<script src="js/renderResultss.js"></script>
 
 <a class="return" href="/">Назад</a>
 

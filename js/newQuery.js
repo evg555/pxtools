@@ -20,11 +20,17 @@ wrapper.on("click","input[name='manual_urls']",function() {
 wrapper.on("submit","form",function (e) {
     e.preventDefault();
 
+    $("#before-load").show();
+
     let form = $(this);
     let result = 0;
-    let pattern = "^(http|https):\/\/.*";
 
-    query = form.find("input[name='query']").val();
+    newPacket = {
+        id: Math.floor(Math.random() * 100000),
+        data: []
+    };
+
+    query = encodeURI(form.find("input[name='query']").val());
     customUrls = form.find("textarea[name='user_urls']").val();
     searchSystem = form.find("select[name='search_system']").val();
     lr = form.find("select[name='lr']").val();
@@ -33,19 +39,50 @@ wrapper.on("submit","form",function (e) {
 
     let file = document.getElementById("url");
 
-    //Загрузка файла
-    if(file.files.length) {
-        let reader = new FileReader();
+    uploadFile(file);
+});
 
+//Загрузка файла
+function uploadFile(file){
+    let pattern = "^(http|https):\/\/.*";
+    let reader = new FileReader();
+
+    if(file.files.length) {
+        //TODO: Не корректно работает функция загрузки файлов
         reader.onload = function(e)
         {
-            result = e.target.result.split("\n");
+            let result = e.target.result.split("\n");
+
+            if (result){
+                for (let i = 0;i < result.length;i++){
+                    if(result[i].match(pattern)){
+                        let domen = result[i];
+
+                        ajaxURL = "https://tools.pixelplus.ru/api/analiztopv2?key="
+                            +key+"&url="
+                            +domen+"&query="
+                            +query+"&search_system="
+                            +searchSystem+"&lr="
+                            +lr+"&deep="
+                            +deep+"&rel_url="
+                            +relURL;
+
+                        /*
+                        newPacket.data.push({
+                            url: url,
+                            report_id: 111111,
+                            status: 2
+                        });
+                        */
+
+                        sendToServer(ajaxURL, domen);
+                    }
+                }
+            }
         };
 
         reader.readAsBinaryString(file.files[0]);
-    }
-
-    if (!result){
+    } else {
         ajaxURL = "https://tools.pixelplus.ru/api/analiztopv2?key="
             +key+"&url=&query="
             +query+"&search_system="
@@ -54,29 +91,7 @@ wrapper.on("submit","form",function (e) {
             +deep+"&rel_url="
             +relURL;
 
-        sendToServer(ajaxURL);
-    } else {
-        for (let i = 0;i < result.length;i++){
-            if(result[i].match(pattern)){
-                ajaxURL = "https://tools.pixelplus.ru/api/analiztopv2?key="
-                    +key+"&url="
-                    +result[i]+"&query="
-                    +query+"&search_system="
-                    +searchSystem+"&lr="
-                    +lr+"&deep="
-                    +deep+"&rel_url="
-                    +relURL;
-
-                /*
-                newPacket.data.push({
-                    url: url,
-                    report_id: 111111,
-                    status: 2
-                });
-                */
-
-                sendToServer(ajaxURL);
-            }
-        }
+        sendToServer(ajaxURL),null;
     }
-});
+}
+

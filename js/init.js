@@ -3,7 +3,7 @@ $(document).ready(function(){
     let packet = JSON.parse($.cookie('packet'));
     let statusText = [
         "Ошибка обработки",
-        "Обработанна",
+        "Обработанно",
         "В процессе"
     ];
     let statusClass = [
@@ -17,7 +17,6 @@ $(document).ready(function(){
     };
     let ajaxURL;
     let key = "21888f1a3a548e104c2599875feb93ec";
-    let preloader = $("#before-load");
 
     //Заполняем данные из куков
     if (packet){
@@ -57,7 +56,7 @@ $(document).ready(function(){
     $(".refresh").on("click", function (e) {
         e.preventDefault();
 
-        preloader.show();
+        $("#before-load").show();
 
         let newPacket = {
             id: Math.floor(Math.random() * 100000),
@@ -106,7 +105,7 @@ $(document).ready(function(){
     $(".check_result").on("click", function (e) {
         e.preventDefault();
 
-        preloader.show();
+        $("#before-load").show();
 
         if(!packet){
             alert("Нет данных для проверки! Сделайте новый запрос!");
@@ -118,7 +117,7 @@ $(document).ready(function(){
             sendToServer(ajaxURL);
         }
 
-        preloader.hide();
+        $("#before-load").hide();
 
         $(".container:nth-child(3)").load("../results.php");
     });

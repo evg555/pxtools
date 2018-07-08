@@ -1,7 +1,10 @@
 let key = "21888f1a3a548e104c2599875feb93ec";
+let newPacket;
 
-function sendToServer(url){
+function sendToServer(url, domen){
     let status = 0;
+
+    if (!domen) domen = "Продвигаемый сайт не задан";
 
     $.ajax({
         url: url,
@@ -20,7 +23,7 @@ function sendToServer(url){
 
     function saveReportID(reportID){
         newPacket.data.push({
-            url: url,
+            url: domen,
             report_id: reportID,
             status: 2
         });

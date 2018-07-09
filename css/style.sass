@@ -23,9 +23,9 @@ header
 
 #before-load
   display: none
-  position: fixed
+  position: absolute
   left: 0
-  top: 70px
+  top: -50px
   right: 0
   bottom: 0
   background: #fff
@@ -40,6 +40,7 @@ header
 .container
   width: 1280px
   margin:  0 auto 100px
+  position: relative
   .inner
     margin-top: 20px
     display: flex
@@ -125,6 +126,8 @@ header
       &:hover
         color: #ffffff
         background-color: #000
+      &:focus
+        box-shadow: none
 
     .results
       width: 100%

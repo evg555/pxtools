@@ -23,9 +23,9 @@ header {
 
 #before-load {
   display: none;
-  position: fixed;
+  position: absolute;
   left: 0;
-  top: 70px;
+  top: -50px;
   right: 0;
   bottom: 0;
   background: #fff;
@@ -39,7 +39,8 @@ header {
 
 .container {
   width: 1280px;
-  margin: 0 auto 100px; }
+  margin: 0 auto 100px;
+  position: relative; }
   .container .inner {
     margin-top: 20px;
     display: flex; }
@@ -119,6 +120,8 @@ header {
       .container .wrapper .btn:hover {
         color: #ffffff;
         background-color: #000; }
+      .container .wrapper .btn:focus {
+        box-shadow: none; }
     .container .wrapper .results {
       width: 100%;
       margin: 50px 0 20px; }

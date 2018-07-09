@@ -14,8 +14,7 @@
 	<script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/bootstrap.min.js"></script>
-	<script src="js/init.js"></script>
-    <script src="js/ajax.js"></script>
+	<script src="js/main.js"></script>
 </head>
 <body>
     <header>
@@ -28,12 +27,12 @@
         </div>
     </header>
 
-    <div id="before-load">
-        <!-- Иконка Font Awesome -->
-        <i class="fa fa-spinner fa-spin"></i>
-    </div>
-
 	<div class="container">
+        <div id="before-load">
+            <!-- Иконка Font Awesome -->
+            <i class="fa fa-spinner fa-spin"></i>
+        </div>
+
         <div class="wrapper">
             <a class="btn new_query" href="/">Новый запрос</a>
             <a class="btn check_result" href="/">Проверить результат</a>

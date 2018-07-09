@@ -15,7 +15,7 @@
 ?>
 
 <script>
-    $(".container").on("click", "nav ul li a", handler);
+
 </script>
 
 <a class="return" href="/">Назад</a>
@@ -128,7 +128,7 @@
                 </tr>
                 <tr>
                     <td>Длина тега Title в словах / символах</td>
-                    <td><?=$userData['title_volume']['words']?> / <?=$userData['title_volume']['symbols']?> {<?=($topData['title_volume']['words']-$userData['title_volume']['words'])?> / <?=($topData['title_volume']['symbols']-$userData['title_volume']['symbols'])?>}</td>
+                    <td><?=$userData['title_volume']['words']?> / <?=$userData['title_volume']['symbols']?> (<?=($topData['title_volume']['words']-$userData['title_volume']['words'])?> / <?=($topData['title_volume']['symbols']-$userData['title_volume']['symbols'])?>)</td>
                     <td><?=$topData['title_volume']['words']?> / <?=$topData['title_volume']['symbols']?></td>
                 </tr>
                 <tr>
@@ -138,7 +138,7 @@
                 </tr>
                 <tr>
                     <td>тИЦ</td>
-                    <td><?=$userData['tcy']?> {<?=($topData['tcy']-$userData['tcy'])?>}</td>
+                    <td><?=$userData['tcy']?> (<?=($topData['tcy']-$userData['tcy'])?>)</td>
                     <td><?=$topData['tcy']?></td>
                 </tr>
                 <tr>

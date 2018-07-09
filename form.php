@@ -1,5 +1,3 @@
-<script src="js/newQuery.js"></script>
-
 <a class="return" href="/">Назад</a>
 
 <h2>Инструмент анализа ТОП по ключевым показателям</h2>

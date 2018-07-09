@@ -48,7 +48,6 @@ function uploadFile(file){
     let reader = new FileReader();
 
     if(file.files.length) {
-        //TODO: Не корректно работает функция загрузки файлов
         reader.onload = function(e)
         {
             let result = e.target.result.split("\n");

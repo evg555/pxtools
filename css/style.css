@@ -50,8 +50,14 @@ header {
         font-weight: bold; }
       .container .inner nav ul li {
         padding: 5px; }
+        .container .inner nav ul li a:visited {
+          color: #007bff; }
         .container .inner nav ul li a:hover {
           text-decoration: none; }
+        .container .inner nav ul li .active, .container .inner nav ul li .active:visited {
+          color: #000; }
+          .container .inner nav ul li .active:hover, .container .inner nav ul li .active:visited:hover {
+            color: #000; }
     .container .inner-container {
       width: 70%;
       margin: 0 20px; }

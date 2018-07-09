@@ -39,19 +39,7 @@ $(document).ready(function(){
 
         $(".wrapper").append(html);
     }
-/*
-    for (let i = 0; i < 3;i++) {
-        newPacket.data.push({
-            url: "http://site.com",
-            report_id: 333333,
-            status: 2
-        });
-    }
 
-    $.cookie('packet', JSON.stringify(newPacket), {
-        expires: 3
-    });
-*/
     //Обновляем результаты
     $(".refresh").on("click", function (e) {
         e.preventDefault();
@@ -103,39 +91,27 @@ $(document).ready(function(){
 
     //Проверить результат
     $(".check_result").on("click", function (e) {
-        e.preventDefault();
+        let urls = {urls:[]};
 
-        $("#before-load").show();
+        e.preventDefault();
 
         if(!packet){
             alert("Нет данных для проверки! Сделайте новый запрос!");
+            return false;
         } else {
+            $("#before-load").show();
+
+            for (let i = 0; i < packet.data.length;i++ ){
+                urls.urls.push(packet.data[i]["url"]);
+            }
+
             ajaxURL = "https://tools.pixelplus.ru/api/analiztopv2?key="
                 +key+"&report_id="
                 +packet.data[0]["report_id"];
-
-            sendToServer(ajaxURL);
         }
 
         $("#before-load").hide();
 
-        $(".container:nth-child(3)").load("../results.php");
+        sendToServer(ajaxURL,null);
     });
-
-    /*
-    let newPacket = {
-        id: Math.random(),
-        data:[
-            {
-                url: "http://site.com",
-                report_id: 111111,
-                status: 1
-            },
-            {
-                url: "http://site.com",
-                report_id: 222222,
-                status: 2
-            }
-        ]
-    */
 });

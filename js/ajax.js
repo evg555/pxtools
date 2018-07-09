@@ -16,7 +16,7 @@ function sendToServer(url, domen){
             } else if (data['error']) {
                 returnStatus(data['code']);
             } else if (data["response"]){
-                renderResults(data["response"]);
+                renderResults(data);
             }
         }
     });
@@ -41,8 +41,17 @@ function sendToServer(url, domen){
         }
     }
 
-    function renderResults(data){
-        console.log(data);
+    function renderResults(result){
+        $.ajax({
+            url: "../results.php",
+            data: result,
+            type: "POST",
+            dataType: "html",
+            success: function(data){
+                $(".container").off("click", "nav ul li a", handler);
+                $(".container:nth-child(3)").html(data);
+            }
+        });
 
         status = 1;
     }
@@ -50,4 +59,16 @@ function sendToServer(url, domen){
     return status;
 }
 
+//Переключение табов
+function handler(e){
+    e.preventDefault();
 
+    console.log(this);
+
+    let reportID = $(this).data("id");
+    let ajaxURL = "https://tools.pixelplus.ru/api/analiztopv2?key="
+        +key+"&report_id="
+        +reportID;
+
+    sendToServer(ajaxURL,null);
+}

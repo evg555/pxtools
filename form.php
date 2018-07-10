@@ -3,12 +3,14 @@
 <h2>Инструмент анализа ТОП по ключевым показателям</h2>
 
 <form action="">
+    <?/*
     <div class="row">
         <input type="text" name="query" placeholder="Ключевое слово: *" value="" required>
     </div>
+    */?>
     <div class="row">
         <div class="field-name">Продвигаемые URL</div>
-        <input type="file" name="url" id="url">
+        <input type="file" name="url" id="url" required>
     </div>
     <div class="row">
         <label><input type="checkbox" name="rel_url" >Определить релевантный URL по выдаче</label>

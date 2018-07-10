@@ -10,7 +10,7 @@ $(document).ready(function(){
     let packet = JSON.parse($.cookie('packet'));
     let statusText = [
         "Ошибка обработки",
-        "Обработанно",
+        "Обработано",
         "В процессе"
     ];
     let statusClass = [
@@ -143,7 +143,6 @@ $(document).ready(function(){
             data: []
         };
 
-        query = encodeURI(form.find("input[name='query']").val());
         customUrls = form.find("textarea[name='user_urls']").val();
         searchSystem = form.find("select[name='search_system']").val();
         lr = form.find("select[name='lr']").val();
@@ -235,22 +234,18 @@ $(document).ready(function(){
 
                 if (result){
                     for (let i = 0;i < result.length;i++){
-                        if(result[i].match(pattern)){
-                            let domen = result[i];
+                        let query = result[i].split(";");
 
-                            ajaxURL = "https://tools.pixelplus.ru/api/analiztopv2?key="
-                                +key+"&url="
-                                +domen+"&query="
-                                +query+"&search_system="
-                                +searchSystem+"&lr="
-                                +lr+"&deep="
-                                +deep+"&rel_url="
-                                +relURL;
+                        ajaxURL = "https://tools.pixelplus.ru/api/analiztopv2?key="
+                            +key+"&url="
+                            +query[0]+"&query="
+                            +encodeURI(query[1].trim())+"&search_system="
+                            +searchSystem+"&lr="
+                            +lr+"&deep="
+                            +deep+"&rel_url="
+                            +relURL;
 
-                            console.log(ajaxURL);
-
-                            sendToServer(ajaxURL, domen);
-                        }
+                        sendToServer(ajaxURL, query[0]);
                     }
 
                     $.cookie('packet', JSON.stringify(newPacket), {
@@ -259,25 +254,10 @@ $(document).ready(function(){
 
                     window.location = "/";
                 }
+
             };
 
-            reader.readAsBinaryString(file.files[0]);
-        } else {
-            ajaxURL = "https://tools.pixelplus.ru/api/analiztopv2?key="
-                +key+"&url=&query="
-                +query+"&search_system="
-                +searchSystem+"&lr="
-                +lr+"&deep="
-                +deep+"&rel_url="
-                +relURL;
-
-            sendToServer(ajaxURL,null);
-
-            $.cookie('packet', JSON.stringify(newPacket), {
-                expires: 3
-            });
-
-            window.location = "/";
+            reader.readAsText(file.files[0],"utf-8");
         }
     }
 });

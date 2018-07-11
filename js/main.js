@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    let key = "21888f1a3a548e104c2599875feb93ec";
+    let expires = 10;
+
     let query;
     let customUrls;
     let searchSystem;
@@ -6,7 +9,6 @@ $(document).ready(function(){
     let deep;
     let relURL;
     let ajaxURL;
-    let key = "21888f1a3a548e104c2599875feb93ec";
     let packet = JSON.parse($.cookie('packet'));
     let statusText = [
         "Ошибка обработки",
@@ -249,7 +251,7 @@ $(document).ready(function(){
                     }
 
                     $.cookie('packet', JSON.stringify(newPacket), {
-                        expires: 3
+                        expires: expires
                     });
 
                     window.location = "/";

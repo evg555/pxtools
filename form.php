@@ -3,15 +3,12 @@
 <h2>Инструмент анализа ТОП по ключевым показателям</h2>
 
 <form action="">
-    <?/*
-    <div class="row">
-        <input type="text" name="query" placeholder="Ключевое слово: *" value="" required>
-    </div>
-    */?>
+    <p>Выберите файл со строками вида "http://site.com; ключ"</p>
     <div class="row">
         <div class="field-name">Продвигаемые URL</div>
         <input type="file" name="url" id="url" required>
     </div>
+    <?/*
     <div class="row">
         <label><input type="checkbox" name="rel_url" >Определить релевантный URL по выдаче</label>
     </div>
@@ -22,6 +19,7 @@
         <div class="field-name">Список URL для анализа от 1 до 20 штук</div>
         <textarea name="user_urls" placeholder="Каждый URL с новой строки"></textarea>
     </div>
+    */?>
     <div class="row">
         <div class="col-lg-6">
             <div class="field-name">Поисковая система</div>

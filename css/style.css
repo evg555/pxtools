@@ -56,9 +56,9 @@ header {
         .container .inner nav ul li a:hover {
           text-decoration: none; }
         .container .inner nav ul li .active, .container .inner nav ul li .active:visited {
-          color: #000; }
+          color: #fe2e36; }
           .container .inner nav ul li .active:hover, .container .inner nav ul li .active:visited:hover {
-            color: #000; }
+            color: #e32d35; }
     .container .inner-container {
       width: 70%;
       margin: 0 20px; }

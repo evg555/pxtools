@@ -3,14 +3,14 @@
         $links = json_decode($_COOKIE['packet'])->data;
     }
 
-    $post = $_POST['response']['response'] ?? '';
-    $domen = $_POST['request']["url"] ?? str_replace(["\r","\r\n"],"",$links[0]->url);
+    $post = $_POST['response']['response'] ? $_POST['response']['response'] : '';
+    $domen = $_POST['request']["url"] ? $_POST['request']["url"] : str_replace(["\r","\r\n"],"",$links[0]->url);
 
     if($post){
-        $userData = $post["user_data"] ?? [];
-        $topData = $post['top_data'] ?? [];
-        $analyzed_urls = $post['analized_urls'] ?? [];
-	    $advanced_data = $post['advanced_data'] ?? [];
+        $userData = $post["user_data"] ? $post["user_data"] : [];
+        $topData = $post['top_data'] ? $post['top_data'] : [];
+        $analyzed_urls = $post['analized_urls'] ? $post['analized_urls'] : [];
+	    $advanced_data = $post['advanced_data'] ? $post['advanced_data'] : [];
     }
 ?>
 
